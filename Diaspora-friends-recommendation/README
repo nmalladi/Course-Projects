@@ -1,0 +1,80 @@
+Installation
+------------
+
+Required
+- Disapora
+- maven
+
+common-friends-dsn/
+ -- Pod2/
+ -- RecommendationSystem/
+
+Run the following commands for compiling and starting the recommendation system
+
+1) run the following build command at top level directory Pod2 and RecommendationSystem, to compile and package the project into a jar
+   
+   mvn clean package
+
+2) start two terminals and run the following command to start the system [This will start the server and listeners simulating the diaspora pod]
+
+ First start Pod2/   java -cp target/Pod2.jar com.recommendation.Executive
+ 
+ Next Start RecommendationSystem/  java -cp target/Pod1.jar com.recommendation.Executive 
+
+
+
+Recommendation system has two modes
+- Production Mode
+- Simulation Mode
+
+Note: To run production mode, diaspora development environment has to be installed on the system.
+
+Simulation Environment
+---------------------
+
+Pod1 has 4 local users with guid - usr1, usr2, usr3, usr4, 
+Remote User: Usr5
+
+FriendGraph G(V,E)
+usr1 ->  usr3, usr4, usr5
+usr2 -> usr3
+usr3 -> usr1, usr2
+usr4 -> usr1
+
+Pod2 has 3 local users with guid - usr5, usr6, usr7
+Remote User: Usr1
+
+FriendGraph G(V,E)
+usr5 -> usr6, usr1
+usr6 -> usr5, usr7
+usr7 -> usr6
+
+
+- Recommendation Algorithm is starting at Pod1, usr3
+- In order to change node where recommendation algorithm starts, login() method of com.recommendation.Client has to updated.
+
+
+Running the Algorithm
+---------------------
+
+Once the step 1,2 are completed, you have two processes running simulating the diaspora pods. 
+
+In this scenario pod1.jar is starting the 
+
+In terminal where Pod1.jar is started,
+
+Please enter the running mode
+Enter 0 for Production Mode
+Enter 1 for Simulation Mode
+
+enter "1"
+
+Enter 'start' to begin algo
+Enter 'stop' to terminate
+Enter 'restart' to run again
+
+enter "start"
+
+output: Recommendation Results will be displayed.
+
+
